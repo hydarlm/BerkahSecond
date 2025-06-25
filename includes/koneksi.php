@@ -2,7 +2,7 @@
 // Database configuration
 $host = 'localhost';
 $username = 'root';
-$password = 'root';
+$password = '';
 $database = 'BerkahSecond';
 
 try {

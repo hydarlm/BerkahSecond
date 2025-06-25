@@ -15,27 +15,27 @@ $max_price = isset($_GET['max_price']) ? (int)$_GET['max_price'] : 0;
 $sort = isset($_GET['sort']) ? $_GET['sort'] : 'newest';
 
 // Build query
-$where_conditions = ["status = 'tersedia'"];
+$where_conditions = ["status = 'available'"];
 $params = [];
 
 if (!empty($search)) {
-    $where_conditions[] = "(nama LIKE ? OR deskripsi LIKE ?)";
+    $where_conditions[] = "(name LIKE ? OR description LIKE ?)";
     $params[] = "%$search%";
     $params[] = "%$search%";
 }
 
 if (!empty($category)) {
-    $where_conditions[] = "kategori = ?";
+    $where_conditions[] = "category_id = ?";
     $params[] = $category;
 }
 
 if ($min_price > 0) {
-    $where_conditions[] = "harga >= ?";
+    $where_conditions[] = "price >= ?";
     $params[] = $min_price;
 }
 
 if ($max_price > 0) {
-    $where_conditions[] = "harga <= ?";
+    $where_conditions[] = "price <= ?";
     $params[] = $max_price;
 }
 
@@ -45,13 +45,13 @@ $where_clause = implode(' AND ', $where_conditions);
 $order_by = "created_at DESC"; // default
 switch ($sort) {
     case 'price_low':
-        $order_by = "harga ASC";
+        $order_by = "price ASC";
         break;
     case 'price_high':
-        $order_by = "harga DESC";
+        $order_by = "price DESC";
         break;
     case 'name':
-        $order_by = "nama ASC";
+        $order_by = "name ASC";
         break;
     case 'oldest':
         $order_by = "created_at ASC";
@@ -202,10 +202,10 @@ try {
         <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
             <div class="card h-100 shadow-sm product-card">
                 <div class="position-relative">
-                    <?php if (!empty($product['gambar'])): ?>
-                    <img src="../assets/images/products/<?php echo htmlspecialchars($product['gambar']); ?>" 
+                    <?php if (!empty($product['imag'])): ?>
+                    <img src="../assets/images/products/<?php echo htmlspecialchars($product['imag']); ?>" 
                          class="card-img-top" 
-                         alt="<?php echo htmlspecialchars($product['nama']); ?>"
+                         alt="<?php echo htmlspecialchars($product['name']); ?>"
                          style="height: 200px; object-fit: cover;">
                     <?php else: ?>
                     <div class="card-img-top bg-light d-flex align-items-center justify-content-center" 
@@ -216,31 +216,31 @@ try {
                     
                     <div class="position-absolute top-0 start-0 p-2">
                         <span class="badge bg-primary">
-                            <?php echo ucfirst(htmlspecialchars($product['kategori'])); ?>
+                            <?php echo ucfirst(htmlspecialchars($product['category_id'])); ?>
                         </span>
                     </div>
                 </div>
                 
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title mb-2">
-                        <?php echo htmlspecialchars($product['nama']); ?>
+                        <?php echo htmlspecialchars($product['name']); ?>
                     </h5>
                     <p class="card-text text-muted small mb-2">
-                        <?php echo substr(htmlspecialchars($product['deskripsi']), 0, 100) . '...'; ?>
+                        <?php echo substr(htmlspecialchars($product['description']), 0, 100) . '...'; ?>
                     </p>
                     <div class="mt-auto">
                         <div class="d-flex justify-content-between align-items-center mb-2">
                             <h4 class="text-primary mb-0">
-                                Rp <?php echo number_format($product['harga'], 0, ',', '.'); ?>
+                                Rp <?php echo number_format($product['price'], 0, ',', '.'); ?>
                             </h4>
                             <small class="text-muted">
-                                <?php echo ucfirst($product['kondisi']); ?>
+                                <?php echo ucfirst($product['condition_item']); ?>
                             </small>
                         </div>
                         <div class="d-flex justify-content-between align-items-center">
                             <small class="text-muted">
                                 <i class="fas fa-map-marker-alt"></i>
-                                <?php echo htmlspecialchars($product['lokasi']); ?>
+                                <!-- <?php echo htmlspecialchars($product['location']); ?> -->
                             </small>
                             <a href="detail.php?id=<?php echo $product['id']; ?>" 
                                class="btn btn-primary btn-sm">

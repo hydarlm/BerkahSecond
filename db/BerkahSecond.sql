@@ -34,8 +34,8 @@ CREATE TABLE products (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
     FOREIGN KEY (category_id) REFERENCES categories(id) ON DELETE SET NULL
-    ALTER TABLE products ADD views INT DEFAULT 0;
 );
+ALTER TABLE products ADD views INT DEFAULT 0;
 
 -- Insert sample categories
 INSERT INTO categories (name) VALUES 
