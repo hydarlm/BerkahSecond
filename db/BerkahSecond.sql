@@ -29,6 +29,7 @@ CREATE TABLE products (
     description TEXT,
     price DECIMAL(10,2) NOT NULL,
     image VARCHAR(255),
+    location VARCHAR(100), -- kolom lokasi ditambahkan di sini
     condition_item ENUM('Seperti Baru', 'Baik', 'Cukup Baik') DEFAULT 'Baik',
     status ENUM('available', 'sold') DEFAULT 'available',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,

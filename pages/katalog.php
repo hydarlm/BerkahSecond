@@ -202,8 +202,8 @@ try {
         <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
             <div class="card h-100 shadow-sm product-card">
                 <div class="position-relative">
-                    <?php if (!empty($product['imag'])): ?>
-                    <img src="../assets/images/products/<?php echo htmlspecialchars($product['imag']); ?>" 
+                    <?php if (!empty($product['image'])): ?>
+                    <img src="../assets/images/<?php echo htmlspecialchars($product['image']); ?>" 
                          class="card-img-top" 
                          alt="<?php echo htmlspecialchars($product['name']); ?>"
                          style="height: 200px; object-fit: cover;">
