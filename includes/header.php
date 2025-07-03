@@ -1,6 +1,13 @@
 <?php
 include_once 'koneksi.php';
 $current_user = getCurrentUser();
+
+if (strpos($_SERVER['SCRIPT_NAME'], 'index.php')) {
+    $basepath = dirname($_SERVER["SCRIPT_NAME"],1).'/';
+}else {
+    $basepath = dirname($_SERVER["SCRIPT_NAME"],2).'/'; 
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -22,7 +29,7 @@ $current_user = getCurrentUser();
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
         <div class="container">
-            <a class="navbar-brand fw-bold text-" href="index.php">
+            <a class="navbar-brand fw-bold text-" href="<?=$basepath;?>index.php">
                 <i class="fas fa-recycle me-2"></i>BerkahSecond
             </a>
             
@@ -34,12 +41,12 @@ $current_user = getCurrentUser();
             <div class="mx-auto">
             <ul class="navbar-nav d-flex flex-row gap-3">
                 <li class="nav-item">
-                    <a class="nav-link" href="index.php">
+                    <a class="nav-link" href="<?=$basepath;?>index.php">
                         <i class="fas fa-home me-1"></i>Beranda
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="pages/katalog.php">
+                    <a class="nav-link" href="<?=$basepath;?>pages/katalog.php">
                         <i class="fas fa-th-large me-1"></i>Katalog
                     </a>
                 </li>
@@ -49,7 +56,7 @@ $current_user = getCurrentUser();
                 <ul class="navbar-nav">
                     <?php if (isLoggedIn()): ?>
                         <li class="nav-item">
-                            <a class="nav-link" href="pages/tambah_produk.php">
+                            <a class="nav-link" href="<?=$basepath;?>pages/tambah_produk.php">
                                 <i class="fas fa-plus-circle me-1"></i>Jual Barang
                             </a>
                         </li>
@@ -58,26 +65,26 @@ $current_user = getCurrentUser();
                                 <i class="fas fa-user me-1"></i><?php echo htmlspecialchars($current_user['full_name']); ?>
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="pages/profile.php">
+                                <li><a class="dropdown-item" href="<?=$basepath;?>pages/profile.php">
                                     <i class="fas fa-user-circle me-2"></i>Profil
                                 </a></li>
-                                <li><a class="dropdown-item" href="pages/my_products.php">
+                                <li><a class="dropdown-item" href="<?=$basepath;?>pages/my_products.php">
                                     <i class="fas fa-box me-2"></i>Barang Saya
                                 </a></li>
                                 <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item text-danger" href="pages/logout.php">
+                                <li><a class="dropdown-item text-danger" href="<?=$basepath;?>pages/logout.php">
                                     <i class="fas fa-sign-out-alt me-2"></i>Keluar
                                 </a></li>
                             </ul>
                         </li>
                     <?php else: ?>
                         <li class="nav-item">
-                            <a class="nav-link" href="pages/login.php">
+                            <a class="nav-link" href="<?=$basepath;?>pages/login.php">
                                 <i class="fas fa-sign-in-alt me-1"></i>Login
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link2 btn btn-primary text-dark ms-2 px-3" href="pages/register.php">
+                            <a class="nav-link2 btn btn-primary text-dark ms-2 px-3" href="<?=$basepath;?>pages/register.php">
                                 <i class="fas fa-user-plus me-1 "></i>Register
                             </a>
                         </li>
