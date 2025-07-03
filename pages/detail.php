@@ -49,10 +49,10 @@ $update_views->execute([$product_id]);
         <!-- Product Images -->
         <div class="col-lg-6 mb-4">
             <div class="product-image-container">
-                <?php if (!empty($product['gambar'])): ?>
-                <img src="../assets/images/products/<?php echo htmlspecialchars($product['gambar']); ?>" 
+                <?php if (!empty($product['image'])): ?>
+                <img src="../assets/images/<?php echo htmlspecialchars($product['image']); ?>" 
                      class="img-fluid rounded shadow" 
-                     alt="<?php echo htmlspecialchars($product['nama']); ?>"
+                     alt="<?php echo htmlspecialchars($product['name']); ?>"
                      id="mainImage"
                      style="width: 100%; height: 400px; object-fit: cover;">
                 <?php else: ?>
