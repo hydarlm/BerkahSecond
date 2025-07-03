@@ -107,9 +107,10 @@ $update_views->execute([$product_id]);
                             <strong>Lokasi:</strong>
                             <span class="ms-1">
                                 <?php if(!empty($product["lokasi"])):?>
-                                    <?php echo htmlspecialchars($product['lokasi']); ?>                                    
-                                <?php endif;?>
+                                    <?php echo htmlspecialchars($product['lokasi']); ?> 
+                                <?php else: ?>
                                     lokasi tidak ditemukan
+                                <?php endif;?>
                             </span>
                         </div>
                     </div>
