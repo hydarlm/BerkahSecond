@@ -22,7 +22,7 @@ $current_user = getCurrentUser();
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
         <div class="container">
-            <a class="navbar-brand fw-bold text-" href="index.php">
+            <a class="navbar-brand fw-bold text-" href="../index.php">
                 <i class="fas fa-recycle me-2"></i>BerkahSecond
             </a>
             
@@ -34,7 +34,7 @@ $current_user = getCurrentUser();
             <div class="mx-auto">
             <ul class="navbar-nav d-flex flex-row gap-3">
                 <li class="nav-item">
-                    <a class="nav-link" href="index.php">
+                    <a class="nav-link" href="../index.php">
                         <i class="fas fa-home me-1"></i>Beranda
                     </a>
                 </li>

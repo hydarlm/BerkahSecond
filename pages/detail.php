@@ -41,7 +41,7 @@ $update_views->execute([$product_id]);
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="../index.php">Home</a></li>
             <li class="breadcrumb-item"><a href="katalog.php">Katalog</a></li>
-            <li class="breadcrumb-item active"><?php echo htmlspecialchars($product['Name']); ?></li>
+            <li class="breadcrumb-item active"><?php echo htmlspecialchars($product['name']); ?></li>
         </ol>
     </nav>
 
@@ -71,7 +71,7 @@ $update_views->execute([$product_id]);
                 <div class="mb-3">
                     <span class="badge bg-primary fs-6">
                         <i class="fas fa-tag me-1"></i>
-                        <?php echo ucfirst(htmlspecialchars($product['category'])); ?>
+                        <?php echo ucfirst(htmlspecialchars($product['category_id'])); ?>
                     </span>
                     <span class="badge bg-success fs-6 ms-2">
                         <i class="fas fa-check-circle me-1"></i>
@@ -98,14 +98,19 @@ $update_views->execute([$product_id]);
                         <div class="info-item">
                             <i class="fas fa-cog text-muted me-2"></i>
                             <strong>Kondisi:</strong>
-                            <span class="ms-1"><?php echo ucfirst(htmlspecialchars($product['kondisi'])); ?></span>
+                            <span class="ms-1"><?php echo ucfirst(htmlspecialchars($product['condition_item'])); ?></span>
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="info-item">
                             <i class="fas fa-map-marker-alt text-muted me-2"></i>
                             <strong>Lokasi:</strong>
-                            <span class="ms-1"><?php echo htmlspecialchars($product['lokasi']); ?></span>
+                            <span class="ms-1">
+                                <?php if(!empty($product["lokasi"])):?>
+                                    <?php echo htmlspecialchars($product['lokasi']); ?>                                    
+                                <?php endif;?>
+                                    lokasi tidak ditemukan
+                            </span>
                         </div>
                     </div>
                     <div class="col-6 mt-2">
@@ -138,8 +143,8 @@ $update_views->execute([$product_id]);
                         </div>
                         
                         <div class="contact-buttons">
-                            <?php if (!empty($product['phone'])): ?>
-                            <a href="https://wa.me/62<?php echo ltrim($product['phone'], '0'); ?>?text=Halo, saya tertarik dengan <?php echo urlencode($product['nama']); ?>" 
+                            <?php if ($product["phone"] && !empty($product['phone'])): ?>
+                            <a href="https://wa.me/62<?php echo ltrim($product['phone'], '0'); ?>?text=Halo, saya tertarik dengan <?php echo urlencode($product['name']); ?>" 
                                class="btn btn-success btn-lg w-100 mb-2" 
                                target="_blank">
                                 <i class="fab fa-whatsapp me-2"></i>
@@ -153,7 +158,7 @@ $update_views->execute([$product_id]);
                             </a>
                             <?php endif; ?>
                             
-                            <a href="mailto:<?php echo $product['email']; ?>?subject=Tanya produk: <?php echo urlencode($product['nama']); ?>" 
+                            <a href="mailto:<?php echo $product['email']; ?>?subject=Tanya produk: <?php echo urlencode($product['name']); ?>" 
                                class="btn btn-outline-secondary w-100">
                                 <i class="fas fa-envelope me-2"></i>
                                 Kirim Email
@@ -186,7 +191,7 @@ $update_views->execute([$product_id]);
                 </div>
                 <div class="card-body">
                     <div class="description-content">
-                        <?php echo nl2br(htmlspecialchars($product['deskripsi'])); ?>
+                        <?php echo nl2br(htmlspecialchars($product['description'])); ?>
                     </div>
                 </div>
             </div>
@@ -220,11 +225,11 @@ $update_views->execute([$product_id]);
                         
                         <div class="card-body d-flex flex-column">
                             <h6 class="card-title mb-2">
-                                <?php echo htmlspecialchars($related['nama']); ?>
+                                <?php echo htmlspecialchars($related['name']); ?>
                             </h6>
                             <div class="mt-auto">
                                 <h5 class="text-primary mb-2">
-                                    Rp <?php echo number_format($related['harga'], 0, ',', '.'); ?>
+                                    Rp <?php echo number_format($related['price'], 0, ',', '.'); ?>
                                 </h5>
                                 <a href="detail.php?id=<?php echo $related['id']; ?>" 
                                    class="btn btn-primary btn-sm w-100">
