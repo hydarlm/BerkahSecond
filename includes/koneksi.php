@@ -1,9 +1,9 @@
 <?php
-// Database configuration
+// Database configuration (InfinityFree)
 $host = 'localhost';
 $username = 'root';
-$password = '';
-$database = 'BerkahSecond';
+$password = 'root'; // Ganti manual
+$database = 'berkahsecond';
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$database", $username, $password);

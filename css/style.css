@@ -67,6 +67,11 @@ body {
   opacity: 0.9;
 }
 
+/* Katalog */ 
+.text-color {
+  color: var(--primary-color);
+}
+
 /* Cards */
 .product-card {
   border: none;
