@@ -81,7 +81,8 @@ try {
     $categories = $cat_stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
     echo "Error database: " . $e->getMessage();
-}$categories = $cat_stmt->fetchAll(PDO::FETCH_COLUMN);
+}
+// $categories = $cat_stmt->fetchAll(PDO::FETCH_COLUMN);
 ?>
 
 <div class="container my-4">
@@ -121,9 +122,9 @@ try {
                     <select class="form-select" id="category" name="category">
                         <option value="">Semua Kategori</option>
                         <?php foreach ($categories as $cat): ?>
-                        <option value="<?php echo htmlspecialchars($cat); ?>" 
-                                <?php echo $category === $cat ? 'selected' : ''; ?>>
-                            <?php echo ucfirst(htmlspecialchars($cat)); ?>
+                        <option value="<?php echo htmlspecialchars($cat["id"]); ?>" 
+                                <?php echo $category === $cat["id"] ? 'selected' : ''; ?>>
+                            <?php echo ucfirst(htmlspecialchars($cat["name"])); ?>
                         </option>
                         <?php endforeach; ?>
                     </select>

@@ -67,10 +67,12 @@ if (strpos($_SERVER['SCRIPT_NAME'], 'index.php')) {
                                 <i class="fas fa-user me-1"></i><?php echo htmlspecialchars($current_user['full_name']); ?>
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="<?=$basepath;?>pages/profile.php">
+                                <li>
+                                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#profileModal">
                                     <i class="fas fa-user-circle me-2"></i>Profil
-                                </a></li>
-                                <li><a class="dropdown-item" href="<?=$basepath;?>pages/my_products.php">
+                                </a>
+                                </li>
+                                <li><a class="dropdown-item" href="<?=$basepath;?>pages/katalog.php?user=<?=$current_user['id'];?>">
                                     <i class="fas fa-box me-2"></i>Barang Saya
                                 </a></li>
                                 <li><hr class="dropdown-divider"></li>
@@ -95,3 +97,22 @@ if (strpos($_SERVER['SCRIPT_NAME'], 'index.php')) {
             </div>
         </div>
     </nav>
+    <!-- Modal Profil -->
+    <div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="profileModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="profileModalLabel">Profil Saya</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+        </div>
+        <div class="modal-body">
+            <p><strong>Nama:</strong> <?= htmlspecialchars($current_user['username']); ?></p>
+            <p><strong>No. HP:</strong> <?= htmlspecialchars($current_user['phone'] ?? '-'); ?></p>
+            <p><strong>Email:</strong> <?= htmlspecialchars($current_user['email']); ?></p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+        </div>
+        </div>
+    </div>
+    </div>
