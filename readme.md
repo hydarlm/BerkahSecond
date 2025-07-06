@@ -1,7 +1,6 @@
 # BerkahSecond
 
-*Tampilan halaman utama BerkahSecond*
-![BerkahSecond Homepage](assets/images/homepage.png)
+![BerkahSecond Homepage](assets/images/Home.png)
 
 Aplikasi marketplace jual beli barang bekas yang memungkinkan pengguna untuk menjual dan membeli produk bekas dengan mudah.
 
