@@ -1,9 +1,9 @@
 # BerkahSecond
 
-![BerkahSecond Homepage](assets/images/homepage.png)
 *Tampilan halaman utama BerkahSecond*
+![BerkahSecond Homepage](assets/images/homepage.png)
 
-Aplikasi marketplace second hand (barang bekas) yang memungkinkan pengguna untuk menjual dan membeli produk bekas dengan mudah.
+Aplikasi marketplace jual beli barang bekas yang memungkinkan pengguna untuk menjual dan membeli produk bekas dengan mudah.
 
 ## 📋 Deskripsi
 
@@ -24,7 +24,7 @@ BerkahSecond adalah platform jual beli barang bekas yang dibuat dengan PHP dan M
 - **Backend**: PHP
 - **Database**: MySQL
 - **Frontend**: HTML, CSS, JavaScript
-- **Web Server**: Apache (XAMPP/WAMP/LAMP)
+- **Web Server**: Apache (XAMPP/MAMP/Laragon)
 
 ## 📦 Kategori Produk
 
